@@ -39,22 +39,8 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-const getApiUrl = () => {
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-  const hostname = window.location.hostname;
-  const isLocal = 
-    hostname === 'localhost' || 
-    hostname === '127.0.0.1' || 
-    hostname.startsWith('192.168.') || 
-    hostname.startsWith('10.') || 
-    hostname.startsWith('172.');
-  
-  return isLocal ? `http://${hostname}:5000/api` : '/api';
-};
-
-const API_URL = getApiUrl();
+// Render Backend URL
+const API_URL = 'https://campus-voice-tump.onrender.com/api';
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
