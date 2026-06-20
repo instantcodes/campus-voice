@@ -1,0 +1,257 @@
+:root {
+  /* Core Theme Light */
+  --accent: #aa3bff;
+  --accent-hover: #962be6;
+  --accent-bg: rgba(170, 59, 255, 0.08);
+  --accent-border: rgba(170, 59, 255, 0.25);
+  
+  --bg: #faf9fb;
+  --card-bg: #ffffff;
+  --text: #4e4854;
+  --text-h: #0f0a14;
+  --text-secondary: #8c8594;
+  --border: #e9e7eb;
+  
+  /* Status Badge Colors */
+  --badge-pending: #f97316;
+  --badge-pending-bg: rgba(249, 115, 22, 0.08);
+  --badge-progress: #3b82f6;
+  --badge-progress-bg: rgba(59, 130, 246, 0.08);
+  --badge-resolved: #10b981;
+  --badge-resolved-bg: rgba(16, 185, 129, 0.08);
+
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-active: 0 10px 15px -3px rgba(170, 59, 255, 0.1), 0 4px 6px -2px rgba(170, 59, 255, 0.05);
+
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  font-family: var(--sans);
+  color: var(--text);
+  background-color: var(--bg);
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Core Theme Dark */
+    --accent: #c084fc;
+    --accent-hover: #a855f7;
+    --accent-bg: rgba(192, 132, 252, 0.12);
+    --accent-border: rgba(192, 132, 252, 0.3);
+    
+    --bg: #0d0e12;
+    --card-bg: #15171e;
+    --text: #a1a1aa;
+    --text-h: #f4f4f5;
+    --text-secondary: #71717a;
+    --border: #27272a;
+    
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --shadow-active: 0 10px 15px -3px rgba(192, 132, 252, 0.15), 0 4px 6px -2px rgba(192, 132, 252, 0.08);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-h);
+  font-weight: 700;
+}
+
+/* Nav Link Styles */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--text-h);
+  background-color: var(--bg);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  background-color: var(--accent-bg);
+}
+
+.nav-link.submit-btn-link {
+  color: #fff;
+  background-color: var(--accent);
+}
+
+.nav-link.submit-btn-link:hover {
+  background-color: var(--accent-hover);
+}
+
+.nav-link.submit-btn-link.active {
+  background-color: var(--accent-hover);
+}
+
+/* Role Badges */
+.role-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+.role-badge.student {
+  background-color: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.role-badge.admin {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Stat Cards */
+.stat-card.clickable:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-active);
+}
+
+.stat-card:hover .stat-icon-wrapper {
+  transform: scale(1.05);
+}
+
+/* Lists and Cards */
+.complaint-row-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-border) !important;
+  box-shadow: var(--shadow);
+}
+
+.complaint-list-item:hover {
+  border-color: var(--accent-border) !important;
+}
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Forms input interactive styles */
+.form-input:focus, select:focus, textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Custom Scrollbars */
+.scrollable-list::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollable-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.scrollable-list::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Buttons style */
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.05) !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+  color: #ef4444 !important;
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  #root {
+    border-left: none;
+    border-right: none;
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch !important;
+    padding: 16px !important;
+  }
+  
+  .nav-links {
+    justify-content: space-between;
+  }
+  
+  .my-complaints-layout, .admin-complaints-layout {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .details-panel-container {
+    position: static !important;
+    top: auto !important;
+  }
+  
+  .dashboard-split {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .user-badge-container {
+    margin-right: auto;
+  }
+  .logout-text {
+    display: none;
+  }
+}
