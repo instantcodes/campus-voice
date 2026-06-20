@@ -30,20 +30,16 @@ export const Navbar: React.FC = () => {
       zIndex: 100,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <div style={{
-          backgroundColor: 'var(--accent)',
-          color: '#fff',
-          width: '38px',
-          height: '38px',
-          borderRadius: '10px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 'bold',
-          fontSize: '18px'
-        }}>
-          V
-        </div>
+        <img 
+          src="https://files.catbox.moe/u7j575.png" 
+          alt="Campus Voice Logo" 
+          style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: '10px',
+            objectFit: 'cover'
+          }} 
+        />
         <div style={{ textAlign: 'left' }}>
           <span style={{ fontWeight: 700, color: 'var(--text-h)', display: 'block', fontSize: '16px', lineHeight: 1.2 }}>
             Campus Voice

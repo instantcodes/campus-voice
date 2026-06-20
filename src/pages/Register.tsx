@@ -64,22 +64,18 @@ export const Register: React.FC = () => {
       }}>
         {/* Logo/Header */}
         <div style={{ marginBottom: '32px' }}>
-          <div style={{
-            backgroundColor: 'var(--accent)',
-            color: '#fff',
-            width: '48px',
-            height: '48px',
-            borderRadius: '14px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontWeight: 'bold',
-            fontSize: '24px',
-            marginBottom: '16px',
-            boxShadow: '0 8px 16px rgba(170, 59, 255, 0.2)'
-          }}>
-            V
-          </div>
+          <img 
+            src="https://files.catbox.moe/u7j575.png" 
+            alt="Campus Voice Logo" 
+            style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '14px',
+              marginBottom: '16px',
+              boxShadow: '0 8px 16px rgba(170, 59, 255, 0.2)',
+              objectFit: 'cover'
+            }} 
+          />
           <h2 style={{ fontSize: '28px', fontWeight: 700, margin: '0 0 6px 0', color: 'var(--text-h)' }}>
             Create Account
           </h2>

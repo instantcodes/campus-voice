@@ -63,22 +63,18 @@ export const Login: React.FC = () => {
       }}>
         {/* Logo/Header */}
         <div style={{ marginBottom: '32px' }}>
-          <div style={{
-            backgroundColor: 'var(--accent)',
-            color: '#fff',
-            width: '48px',
-            height: '48px',
-            borderRadius: '14px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontWeight: 'bold',
-            fontSize: '24px',
-            marginBottom: '16px',
-            boxShadow: '0 8px 16px rgba(170, 59, 255, 0.2)'
-          }}>
-            V
-          </div>
+          <img 
+            src="https://files.catbox.moe/u7j575.png" 
+            alt="Campus Voice Logo" 
+            style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '14px',
+              marginBottom: '16px',
+              boxShadow: '0 8px 16px rgba(170, 59, 255, 0.2)',
+              objectFit: 'cover'
+            }} 
+          />
           <h2 style={{ fontSize: '28px', fontWeight: 700, margin: '0 0 6px 0', color: 'var(--text-h)' }}>
             Welcome back
           </h2>
@@ -176,7 +172,7 @@ export const Login: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={role === 'student' ? 'e.g., student@campusvoice.edu' : 'e.g., admin@campusvoice.edu'}
+              placeholder={role === 'student' ? 'e.g., Student@gmail.com' : 'e.g., Adim@gmail.com'}
               className="form-input"
               style={{
                 width: '100%',
@@ -247,6 +243,7 @@ export const Login: React.FC = () => {
             Don't have an account? <Link to="/register" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: 600 }}>Create an account</Link>
           </p>
         </div>
+
 
       </div>
     </div>

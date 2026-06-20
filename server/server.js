@@ -36,7 +36,7 @@ mongoose
     
     // Auto-seed demo users if not present
     try {
-      const studentEmail = 'student@campusvoice.edu';
+      const studentEmail = 'Student@gmail.com';
       const studentExists = await User.findOne({ email: studentEmail });
       if (!studentExists) {
         const salt = await bcrypt.genSalt(10);
@@ -47,10 +47,10 @@ mongoose
           password: hashedPassword,
           role: 'student',
         });
-        console.log('Seeded demo student: student@campusvoice.edu / demo123');
+        console.log('Seeded demo student: Student@gmail.com / demo123');
       }
 
-      const adminEmail = 'admin@campusvoice.edu';
+      const adminEmail = 'Adim@gmail.com';
       const adminExists = await User.findOne({ email: adminEmail });
       if (!adminExists) {
         const salt = await bcrypt.genSalt(10);
@@ -61,7 +61,7 @@ mongoose
           password: hashedPassword,
           role: 'admin',
         });
-        console.log('Seeded demo admin: admin@campusvoice.edu / demo123');
+        console.log('Seeded demo admin: Adim@gmail.com / demo123');
       }
     } catch (seedErr) {
       console.error('Error seeding demo users:', seedErr.message);
