@@ -16,7 +16,8 @@ export const StudentDashboard: React.FC = () => {
   if (!user) return null;
 
   // Filter complaints raised by this student
-  const myComplaints = complaints.filter((c) => c.createdBy === user.id);
+  // const myComplaints = complaints.filter((c) => c.createdBy === user.id);
+  const myComplaints = complaints;
 
   const total = myComplaints.length;
   const pending = myComplaints.filter((c) => c.status === 'Pending').length;
