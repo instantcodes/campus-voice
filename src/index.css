@@ -32,7 +32,7 @@
   box-sizing: border-box;
 }
 
-:root.dark {
+html.dark, :root.dark, body.dark, .dark {
   /* Core Theme Dark */
   --accent: #c084fc;
   --accent-hover: #a855f7;
