@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AppProvider, useApp } from './context/AppContext';
 import Navbar from './components/Navbar';
+import ThemeToggle from './components/ThemeToggle';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import StudentDashboard from './pages/student/Dashboard';
@@ -47,7 +48,13 @@ const AppContent: React.FC = () => {
 
   return (
     <Router>
-      {user && <Navbar />}
+      {user ? (
+        <Navbar />
+      ) : (
+        <div style={{ position: 'fixed', top: '16px', right: '16px', zIndex: 1000 }}>
+          <ThemeToggle />
+        </div>
+      )}
       <div style={{ flexGrow: 1 }} className="main-content-wrapper">
         <Routes>
           {/* Auth Routes */}

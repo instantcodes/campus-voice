@@ -27,6 +27,8 @@ interface AppContextType {
   user: User | null;
   complaints: Complaint[];
   loading: boolean;
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
   login: (email: string, password: string, role: 'student' | 'admin') => Promise<string | null>; // Returns error msg or null on success
   register: (name: string, email: string, password: string, role: 'student' | 'admin') => Promise<string | null>;
   logout: () => void;
@@ -50,6 +52,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const [complaints, setComplaints] = useState<Complaint[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   // Set JWT on load if present
   useEffect(() => {
@@ -172,6 +194,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         user,
         complaints,
         loading,
+        theme,
+        toggleTheme,
         login,
         register,
         logout,

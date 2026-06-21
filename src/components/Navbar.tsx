@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { Shield, User, LogOut, FileText, LayoutDashboard, PlusCircle, CheckSquare } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const { user, logout } = useApp();
@@ -96,6 +97,7 @@ export const Navbar: React.FC = () => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <ThemeToggle />
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }} className="user-badge-container">
           <div style={{
             display: 'flex',
