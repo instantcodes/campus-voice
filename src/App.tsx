@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { AppProvider, useApp } from './context/AppContext';
 import Navbar from './components/Navbar';
 import ThemeToggle from './components/ThemeToggle';
-import Welcome from './pages/Welcome';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import StudentDashboard from './pages/student/Dashboard';
@@ -120,14 +119,11 @@ const AppContent: React.FC = () => {
             }
           />
 
-          {/* Welcome/Landing Route */}
-          <Route path="/" element={<Welcome />} />
-
           {/* Fallback Catch-all Route */}
           <Route
             path="*"
             element={
-              <Navigate to={user ? (user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard') : '/'} replace />
+              <Navigate to={user ? (user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard') : '/login'} replace />
             }
           />
         </Routes>
