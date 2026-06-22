@@ -10,6 +10,7 @@ import SubmitComplaint from './pages/student/SubmitComplaint';
 import MyComplaints from './pages/student/MyComplaints';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminComplaints from './pages/admin/AdminComplaints';
+import Welcome from './pages/Welcome';
 
 // ProtectedRoute Wrapper for role management
 const ProtectedRoute: React.FC<{ children: React.ReactNode; allowedRole?: 'student' | 'admin' }> = ({
@@ -45,18 +46,24 @@ const AuthRedirect: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
 const AppContent: React.FC = () => {
   const { user } = useApp();
+  const location = useLocation();
+
+  const isWelcomePage = location.pathname === '/';
 
   return (
-    <Router>
+    <>
       {user ? (
         <Navbar />
-      ) : (
+      ) : !isWelcomePage ? (
         <div style={{ position: 'fixed', top: '16px', right: '16px', zIndex: 1000 }}>
           <ThemeToggle />
         </div>
-      )}
+      ) : null}
       <div style={{ flexGrow: 1 }} className="main-content-wrapper">
         <Routes>
+          {/* Welcome landing page */}
+          <Route path="/" element={<Welcome />} />
+
           {/* Auth Routes */}
           <Route
             path="/login"
@@ -123,7 +130,7 @@ const AppContent: React.FC = () => {
           <Route
             path="*"
             element={
-              <Navigate to={user ? (user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard') : '/login'} replace />
+              <Navigate to={user ? (user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard') : '/'} replace />
             }
           />
         </Routes>
@@ -138,14 +145,16 @@ const AppContent: React.FC = () => {
       }}>
         © {new Date().getFullYear()} Campus Voice. All rights reserved.
       </footer>
-    </Router>
+    </>
   );
 };
 
 export function App() {
   return (
     <AppProvider>
-      <AppContent />
+      <Router>
+        <AppContent />
+      </Router>
     </AppProvider>
   );
 }
